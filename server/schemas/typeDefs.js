@@ -7,38 +7,54 @@ type User {
   _id: ID
   username: String
   email: String
-  password: [Password]
+  Password: String
+  savedBooks: [String]
 }
 
 type Book {
-  _id: ID
-  Description: String
-  createdAt: String
-  username: String
-  email: Int
-  title: String
-  image: Image
-  link:Link
-  reactions: [Reaction]
-}
-
-type Description {
-  _id: ID
-  descriptionBody: String
-  createdAt: String
-  username: String
+ authors: [String]
+ description: String
+ bookId: String
+ image: String
+ link: String
+ title: String
 }
 
 type Query {
-  users: [User]
+  me: [User]
   user(username: String!): User
-  password(password: String): [Password]
+  password(password: String): Password
   books(_id: ID!): Book
 }
 
 type Mutation {
   login(email: String!, password: String!): User
   addUser(username: String!, email: String!, password: String!): User
+  saveBook(author: String!, description: String!, title: String!, bookId: String!, image: String!, link: String!): User
+}
+
+removeBook {
+  bookId: String
+  type User {
+    _id:ID
+    username: String
+    email: String
+    bookCount: Int
+    savedBooks: [Book] 
+  },
+  type Book {
+    bookId: String
+    authors: [String]
+    description: String
+    title: String
+    image: String
+    link: String
+  },
+
+  type Auth {
+    token: String
+    user: 
+  }
 }
   `;
 
