@@ -26,7 +26,11 @@ type Auth {
 }
 
 type Query {
-  me: [User]
+  me: User
+  users: [User]
+  user(username: String!): User
+  books(username: String): [Book]
+  book(_id: ID!): Book
 }
 
 type Mutation {
